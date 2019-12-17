@@ -1,0 +1,98 @@
+body {
+    background-image: url(./img/DAF\ XF\ 480\ EURO\ 6\ \ \(8\).jpeg);
+    background-repeat: no-repeat;
+    -moz-background-size: 100%;
+    -webkit-background-size: 100%; 
+    -o-background-size: 100%;
+    background-size: 100%;
+}
+.content {
+    max-width: 100%;
+    margin: 0 10%;
+}
+.dws-menu {
+    margin: 0;
+    padding: 0;
+    
+    margin-top: 15px;
+    
+   
+    margin-bottom: 1px;
+
+}
+.dws-menu ul,
+.dws-menu ol {
+list-style: none;
+
+}
+.dws-menu > ul {
+    display: flex;
+    justify-content: center;
+    height: 50px;
+}
+
+.dws-menu > ul li a {
+    display: block;
+    background: #ececed;
+    padding: 10px 30px 15px 40px ;
+    font-size: 14px;
+    color: #454547;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition:  all 0.3s ease;
+    height: 25px;
+    justify-content: center;
+}
+
+ a {
+    
+    text-align: center;
+}
+
+.dws-menu > ul li{
+    position: relative;
+    border-right: 1px solid #c7c8ca;
+}
+.dws-menu > ul li:first-child {
+    border-left: 1px solid #b2b3b5;
+}
+.dws-menu > ul li:last-child {
+    border-right: 1px solid #babbbb;
+}
+.dws-menu li a:hover{
+    background: #454547;
+    color: white;
+    box-shadow: 1px 5px 10px -5px black;
+    transition:  all 0.3s ease;
+}
+.dws-menu li ul {
+    position: absolute;
+    max-width: 250px;
+    display: none;
+}
+.dws-menu li > ul li {
+    border: 1px solid #c7c8ca;
+}
+.dws-menu li>ul li a{
+    padding: 10px;
+    text-transform: none;
+    background: #e4e4e5;
+    width: 170px;
+}
+.dws-menu li > ul li ul{
+    position: absolute;
+    right: -150px;
+    top: 0;
+}
+.dws-menu li:hover > ul{
+    display: block;
+}
+.lupa-img {
+    width: 25px;
+}
+
+
+.lupa-menu {
+    padding: 15px 0 0 30px;
+    color: white;
+}

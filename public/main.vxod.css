@@ -1,0 +1,70 @@
+body {
+    background-image: url(./img/DAF\ XF\ 480\ EURO\ 6\ \ \(8\).jpeg);
+    background-repeat: no-repeat;
+    -moz-background-size: 100%;
+    -webkit-background-size: 100%; 
+    -o-background-size: 100%;
+    background-size: 100%;
+}
+.content {
+    max-width: 960px;
+    margin: 0 auto;
+
+}
+.box_left {
+    border: solid 1px rgb(100, 100, 100);
+    background: rgb(233, 231, 231);
+    border-radius: 10%;
+    width: 250px;
+    height: 330px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 20px 35%;
+}
+.form-country span {
+    margin:0 0 5px 10px ;
+}
+
+h4 {
+    text-align: center;
+    margin: 20px 0 0 0 ;
+}
+form {
+    margin: 20px;
+}
+
+.value {
+    vertical-align: middle;
+}
+input {
+    display: inline-block;
+    padding: 0px 20px;
+    height: 24px;
+    vertical-align: middle;
+    margin-top:5px;
+    margin-bottom: 15px;
+}
+input:hover {
+    background-color: rgb(185, 185, 179);
+}
+.form-field   {
+   
+    display: inline-block;
+}
+.submit {
+    background-color: rgb(164, 167, 164);
+   margin: 10px 70px ;
+}
+.submit:active {
+    content: '';
+    background-color: rgb(138, 137, 207);
+}
+a { 
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+    margin-left: 20%; 
+}
+a:hover {
+    text-decoration: underline;
+}
