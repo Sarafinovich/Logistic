@@ -13,19 +13,19 @@
     <div class="content">
         <div class="box_left">
             <h4> ВХОД</h4>
-            <form method="POST" action="/user_registation">
+            <form method="POST" action="/user_authorization">
                 <label class="form-field">
                     <span>Логин:</span>
-                    <input type="text" placeholder="Enter your login">
+                    <input type="text" placeholder="Enter your login" name="login">
                 </label>
 
                 <label class="password">
                     <span>Пароль:</span>
-                    <input type="password" placeholder="Enter your password">
+                    <input type="password" placeholder="Enter your password" name="password">
                 </label>
-                <label>
-                    <input acti class="submit" type="submit" value="Регистрация">
-                </label>
+                    
+                    <a class="registracia_a" href="/registration"> Регистрация </a>
+           
                 <label>
                     <input class="submit" type="submit" value="Вход">
                 </label>

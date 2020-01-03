@@ -1,4 +1,8 @@
 var mongoose = require('mongoose');
+var user = require('../model/users');
+var mongoose = require('mongoose');
+var crypto = require('crypto');
+var jwt = require('jsonwebtoken');
 
 var usersSchema = new mongoose.Schema(
     {
@@ -12,29 +16,53 @@ var usersSchema = new mongoose.Schema(
             required: true
         },
         hash: String,
-        salt: String,
-        password: String
+        salt: String
+      
     }
     );
 
+    usersSchema.methods.SetPasword = function(password) {
+        this.salt = crypto.randomBytes(16).toString('hex');
+        this.hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64, 'sha512').toString('hex');
+    };
+
+    usersSchema.methods.validPassword = function(password) {
+        return this.hash === crypto.pbkdf2Sync(password, this.salt, 1000, 64, 'sha512').toString('hex');
+    };
+
 var User = mongoose.model('users', usersSchema);
+
+
+exports.user_registration_create =  function(email, login,password) {
+    
+    var user_N = new User();
+    user_N.email = email; 
+    user_N.name = login;
+    user_N.SetPasword(password); 
+    return new Promise(function (resolve, reject){
+    user_N.save(function(err){
+        if (err) { 
+            reject(err);
+        }
+        else { 
+            resolve(user_N); //null
+         }});
+    }
+    );
+};
 
 //заглушка
 exports.check_user = function(login, password) {
-   
-    return true;
-    //if (req.session.userName === "undefined" || req.session.userName == null) { 
-      //  res.redirect(303, '/registration'); }
-   // else return next();   
+     return true;
   };
   
   exports.find_user = function(){
     return new Promise(function (resolve, reject) {
-        user.find({}, function (err, cars) {
+        user.find({}, function (err, user) {
             if (err){ reject(err); }
-            else { resolve(cars); }
+            else { resolve(user); }
         }
-        ).sort({"login": 1});
+        );
     });
 };
 
@@ -42,8 +70,8 @@ exports.check_user = function(login, password) {
  exports.find_user_f = function(login,password){
     return new Promise(function (resolve, reject) {
        let params =  {
-                  "email": login,//{$gte: params.startdate.toISOString(), $lt: params.finishdate.toISOString()}, //логин
-                  "password": password//{$in: [2]} //пароль
+                  "email": login//{$gte: params.startdate.toISOString(), $lt: params.finishdate.toISOString()}, //логин
+                //  "password": password //{$in: [2]} //пароль
               };
         User.find(params, function (err, obj) {
         if (err){ 
@@ -56,7 +84,25 @@ exports.check_user = function(login, password) {
         )
     });
  };
+ 
+ exports.find_user_password = function(password){    //поиск проверка пароля
+     return new Promise(function(resolve, reject){
+         let params = {
+             "password": validPassword(password)
+         } ;
+         user.find(params,function(err,pass){
+             if(err){
+                 reject(err);
+             }
+             else{
+                 resolve(pass);
+             }
+            })
+     });
+ };
 
+ 
+/*
  exports.user_registration = function(email ,login,password){
     return new Promise(function (resolve, reject) {
         var user = new User();//
@@ -73,22 +119,22 @@ exports.check_user = function(login, password) {
         }
         );
     });
- };
+ };*/
 
 //console.log(Users);
 
-var user = new User();//
-user.email = "dima@gmail.com";
-user.name = "dima";
-user.password = "123";
-user.save(function(err){
-    if (err) { 
-          console.log('error by save user: ' + err.message); }
-    else { 
-        console.log('user ' + user.email + ' saved')
-     }
-}
-);
+// var user = new User(); // 
+// user.email = "dima@gmail.com";
+// user.name = "dima";
+// user.SetPasword("123");
+// user.save(function(err){
+//     if (err) { 
+//           console.log('error by save user: ' + err.message); }
+//     else { 
+//         console.log('user ' + user.email + ' saved')
+//      }
+// }
+// );
 
 
     

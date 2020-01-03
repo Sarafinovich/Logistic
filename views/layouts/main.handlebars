@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>   
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,29 +16,21 @@
     <div class="content">
         <nav class="dws-menu">
             <ul>
-                <li> <a href="#"> АВТОМОБИЛИ</a>
-                    <ul>
-                        <li><a href="#"> Scania</a></li>
-                        <li><a href="#"> MAN</a></li>
-                        <li><a href="#">ГАЗ</a></li>
-
-
-                    </ul>
-                </li>
+                 <li> <a href="/home"> На главную</a>
+               </li>
+                <li> <a href="/cars"> АВТОМОБИЛИ</a>
+               </li>
                 <li> <a href="#" >ТОВАРЫ /<br> УСЛУГИ</a></li>
-                <li><a href="#" >КЛИЕНТЫ</a>
+                <li><a href="/customers" >КЛИЕНТЫ</a>
                     <ul>
                         <li><a href="#">ITA</a></li>
-                       
-
-
                     </ul>
                 </li>
-                <li> <a href="#" >ПОСТАВЩИКИ</a>
-                    <ul>
+                <li> <a href="/providers" >ПОСТАВЩИКИ</a>
+                    {{!-- <ul>
                         <li><a href="#">О компании Kingston</a></li>
                         
-                    </ul>
+                    </ul> --}}
                 </li>
                 <li> <a href="#" >Контакты</a>
 
@@ -49,26 +43,74 @@
                 </li>
                 <li><a href="#" >РЕЙТИНГ<br> ПОСТАВЩИКОВ</a>
                     <ul>
-
-
-
                     </ul>
                 </li>
-                <li><a href="/registration">ВЫХОД</a>
+                <li><a href="/authorization">ВЫХОД</a>
 
                 </li>
                 <div class="lupa-menu">
                         <a href="#"><img class="lupa-img" src="./img/lupa.png"></a>
-                    </div>
+        </div>
         </nav>
+     </div>
+     {{{body}}} 
+    <section class="footer-section">
+        <div class="section">
+            <div class="box">
+                <div class="section-box_1">
+                    <h5 class="section-h"><a href="#">Юридическая информация</a></h5>
+                    <ul>
+                        <li><a class="section-spisok" href="#"> Гарантия</a></li>
+                        <li><a class="section-spisok" href="#"> EU-U.S. Privacy Shield</a></li>
+                        <li><a class="section-spisok" href="#"> Политика работы с файлами cookie</a></li>
+                    </ul>
+                </div>
+                <div class="section-box_1">
+                    <h5 class="section-h"><a href="#"> Организация</a></h5>
+                    <ul>
+                        <li><a class="section-spisok" href="#">О нас</a></li>
+                        <li><a class="section-spisok" href="#"> Контактная информация</a></li>
+                        <li><a class="section-spisok" href="#">Информация для СМИ</a></li>
+                    </ul>
+                </div>
+                <div class="section-box_1">
+                    <h5 class="section-h"><a href="#"> Соответствие требованиями</h5>
+                    <ul>
+                        <li><a class="section-spisok" href="#"> Социальные вопросы / Охрана окружающей среды</a></li>
+                        <li><a class="section-spisok" href="#"> Управление цепочкой поставок</a></li>
+                    </ul>
+                </div>
+                <div class="section-box_1">
+                    <h5 class="section-h"><a href="#"> Веб-сайт</a></h5>
+                    <ul>
+                        <li><a class="section-spisok" href="#"> Обратная связь</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        
-
-    </div>
-
-     {{{body}}}
+    <section class="copyright">
+        <div class="copyright-content">
+            <div class="copyright-text">
+                <p>&copy; 2019 , 17600 Newhope Street, Fountain Valley, CA 92708 USA. Все права защищены.
+                    Все товарные знаки и зарегистрированные товарные знаки являются собственностью своих соответствующих
+                    владельцев.
+                </p>
+            </div>
+            <div class="copyright-icon">
+                <ul>
+                    <li><a href="https://vk.com/"><img src="./img/icon/vk-brands.svg"> </a></li>
+                    <li><a href="https://www.facebook.com"><img src="./img/icon/facebook-brands.svg"> </a></li>
+                    <li><a href="https://twitter.com"><img src="./img/icon/twitter-brands.svg"> </a></li>
+                    <li><a href="https://www.viber.com"><img src="./img/icon/viber-brands.svg"> </a></li>
+                    <li><a href="https://www.youtube.com"><img src="./img/icon/youtube-brands.svg"> </a></li>
+                    <li><a href="https://www.instagram.com"><img src="./img/icon/instagram-brands.svg"> </a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
     
-
 </body>
 
 </html>

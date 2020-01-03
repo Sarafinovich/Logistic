@@ -1,0 +1,40 @@
+<style>
+.table {
+   margin: auto;
+   width: 50% !important;
+   background-color: aliceblue;
+ }
+
+.dates {
+   width: 50%; 
+
+}
+</style>
+
+<button type="button" class="btn btn-primary" onClick='location.href="/add_providers"'>Добавить поставщика</button>
+
+<table class="table table-striped table-bordered w-50 table-center">
+    <tr>
+        <th>Название организации</th>
+        <th>Тип услуг</th>
+        <th>УНП</th>
+        <th>Юридический адрес</th>
+        <th>Фактический адрес</th>
+        <th>Тел./факс</th>
+        <th>Контактное лицо</th>
+        <th>Банковский счет</th>
+    </tr>
+    {{#each ddd}}
+        <tr>
+            <td align="center">{{FIO}}</td>
+            <td>{{{Name}}}</td>
+            <td>{{Type}}</td>
+            <td>{{{UNP}}}</td>
+            <td>{{{Legal_address}}}</td>
+            <td>{{{Actual_address}}}</td>
+            <td>{{{Tel}}}</td> 
+            <td>{{{Person}}}</td> 
+            <td>{{{Payment}}}</td>
+        </tr>
+    {{/each}}
+</table>

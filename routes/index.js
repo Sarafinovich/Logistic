@@ -1,9 +1,17 @@
 var express = require('express');
 var router = express.Router();
-var bodyParser = require('body-parser');
+//var bodyParser = require('body-parser');
 
-var user = require('../model/users.js');
+//var user = require('../model/users.js');
 var contr = require('../controllers/index.js');
+var contr_a = require('../controllers/cars');
+var customer = require('../controllers/customers');
+var provider = require('../controllers/providers');
+//var reg = require('./registration.js');
+//var cars = require('./cars.js');
+
+//var create_auto = require('./create_auto.js');
+
 
 //const mongo = require('../model/db');
 
@@ -19,12 +27,22 @@ router.get('/', IsAuthorize, function (req, res, next) {
   res.render('home', { title: 'Express' });
 });
 
-router.get('/authorization', contr.controller_registration); 
+router.get('/registration', contr.controller_registration); 
+router.get('/authorization', contr.controller_authorization);
+router.get('/add_auto',IsAuthorize, contr_a.add_car); 
+router.get('/add_customers', IsAuthorize, customer.add_customers);
+router.get('/add_providers', IsAuthorize, provider.add_providers);
+
+
 /*router.get('/registration', function (req, res, next) {
   res.render('registration', { layout: null });
 });*/
 
-router.post('/user_registation', contr.controller_post); //перенесено //chekc_registr
+router.post('/user_authorization', contr.controller_post); //перенесено //chekc_registr
+router.post('/user_registation', contr.user_registration); 
+router.post('/save_car', contr_a.save_car); 
+router.post('/save_customers', customer.save_customers);
+router.post('/save_providers', provider.save_providers);
 
 /*router.post('/user_registation', function (req, res, ) {
   console.log(req.body.login, req.body.password); // {}, undefined
@@ -39,8 +57,13 @@ router.post('/user_registation', contr.controller_post); //перенесено 
   }   
   }); */
 
-router.get("/", function (req, res) {
-  res.send('home', { title: 'Express' });
-});
+// router.get("/", function (req, res) {
+//   res.send('home', { title: 'Express' });
+// });
+
+
+// router.get("/", function(req,res){
+//   res.send('create_auto');
+// })
 
 module.exports = router;

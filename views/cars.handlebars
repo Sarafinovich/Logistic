@@ -1,0 +1,36 @@
+<style>
+.table {
+   margin: auto;
+   width: 50% !important;
+   background-color: aliceblue;
+   margin-top: 20px;
+ }
+
+.dates {
+   width: 50%; 
+
+}
+</style>
+
+<button type="button" class="btn btn-primary" onClick='location.href="/add_auto"'>Добавить авто</button>
+
+<table class="table table-striped table-bordered w-50 table-center">
+    <tr>
+        <th>ФИО</th>
+        <th>Модель автомобиля</th>
+        <th>Номер шасси</th>
+        <th>Год автомобиля</th>
+        <th>Направление перевозки</th>
+        <th> </th>
+    </tr>
+    {{#each ddd}}
+        <tr>
+            <td align="center">{{FIO}}</td>
+            <td>{{{Model}}}</td>
+            <td>{{Chassis}}</td>
+            <td>{{{Year}}}</td>
+            <td>{{{Direction_transportation}}}</td> 
+            <td><a href="/add_auto?id={{_id}}"> <img class="edit-img" src="./img/edit.png"></a> <a href="/add_cars_delete"> <img class="Delete-img" src="./img/Delete.png"></a> </td> 
+        </tr>
+    {{/each}}
+</table>
