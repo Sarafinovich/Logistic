@@ -54,6 +54,18 @@ var providersSchema = new mongoose.Schema(
         });
     });
 };  
+
+exports.find_provider_id = function(_id) {
+    return new Promise(function (resolve, reject) {  //
+        Providers.find({ "_id": _id }, function (err, providers) {
+            if (err) { reject(err); 
+            }
+            else {
+                resolve(providers);
+            }
+        });
+    });
+};
   
 exports.create_providers = function(Name,Type, UNP, Legal_address, Actual_address, Tel, Person, Payment) {
     
@@ -78,7 +90,43 @@ exports.create_providers = function(Name,Type, UNP, Legal_address, Actual_addres
     }
     );
 };
-        
+    
+exports.delete_provider = function (id) {
+    return new Promise(function (resolve, reject) {
+     
+        Providers.findOneAndRemove({"_id": id }, function (err) {
+            if (err) {
+                reject(err);
+            }
+            else {
+                resolve(null);
+            }
+        });
+    })
+ };
 
+ exports.update_provider = function (Name,Type, UNP, Legal_address, Actual_address, Tel, Person, Payment, _id) {
+    return new Promise(function (resolve, reject) {
+        var provider_info = {
+            Name: Name,
+            Type: Type,
+            UNP: UNP,
+            Legal_address: Legal_address,
+            Actual_address: Actual_address,
+            Tel: Tel,
+            Person: Person,
+            Payment: Payment
+        };
+
+        Providers.findOneAndUpdate({ "_id": _id }, provider_info, { upsert: true, new: true, runValidators: true }, function (err) {
+            if (err) {
+                reject(err);
+            }
+            else {
+                resolve(null);
+            }
+        });
+    })
+};
 
 

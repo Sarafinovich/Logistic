@@ -9,7 +9,21 @@
    width: 50%; 
 
 }
+ input[type="submit"] {
+        width: 30px;
+        height: 30px;
+        border: none;
+        background: url(./img/Delete.png) no-repeat 50% 50%;
+        img {
+            line-height: 1px;
+        }
 </style>
+
+<script>
+    function my_confirm(form) {
+        return confirm('Удалить клиента?');
+    }
+</script>
 
 <button type="button" class="btn btn-primary" onClick='location.href="/add_customers"'>Добавить клиента</button>
 
@@ -22,17 +36,24 @@
         <th>Фактический адрес</th>
         <th>Тел./факс</th>
         <th>Контактное лицо</th>
+        <th> </th>
     </tr>
     {{#each ddd}}
         <tr>
-            <td align="center">{{FIO}}</td>
-            <td>{{{Name}}}</td>
-            <td>{{Type}}</td>
-            <td>{{{UNP}}}</td>
+            <td align="center">{{Name}}</td>
+            <td>{{{Type}}}</td>
+            <td>{{UNP}}</td>
             <td>{{{Legal_address}}}</td>
             <td>{{{Actual_address}}}</td>
-            <td>{{{Tel}}}</td> 
+            <td>{{{Tel}}}</td>
             <td>{{{Person}}}</td> 
+            <td>
+            <a href="/add_customers?id={{_id}}"> <img class="edit-img" src="./img/edit.png" ></a>
+            <form method="POST" action="/delete_customer" onsubmit="return my_confirm()">
+                <input class="submit" type="submit" value="">
+                <input type="hidden" name="id" value={{_id}}>
+            </form>
+            </td>
         </tr>
     {{/each}}
 </table>

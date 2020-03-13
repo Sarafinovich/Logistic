@@ -13,4 +13,6 @@ function IsAuthorize(req, res, next) {
 router.get('/',IsAuthorize, contr.find_providers);
 //router.get('/add_auto',IsAuthorize, contr.add_car);
 
+router.post('/delete_provider', IsAuthorize, contr.delete_provider);
+
 module.exports = router;

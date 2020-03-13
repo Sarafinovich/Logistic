@@ -1,18 +1,46 @@
 <style>
-.table {
-   margin: auto;
-   width: 50% !important;
-   background-color: aliceblue;
-   margin-top: 20px;
- }
+    .table {
+        margin: auto;
+        width: 50% !important;
+        background-color: aliceblue;
+        margin-top: 20px;
+    }
 
-.dates {
-   width: 50%; 
+    .dates {
+        width: 50%;
 
-}
+    }
+
+    .flex-container {
+        display: flex;
+    }
+
+    input[type="submit"] {
+        width: 30px;
+        height: 30px;
+        border: none;
+        background: url(./img/Delete.png) no-repeat 50% 50%;
+        img {
+            line-height: 1px;
+        }
+ 
+     .layer2 {
+    position: absolute; /* Абсолютное позиционирование */
+    bottom: 15px; /* Положение от нижнего края */
+    right: 15px; /* Положение от правого края */
+    left: 50pt;
+    line-height: 1px;
+   }
+        >
 </style>
 
-<button type="button" class="btn btn-primary" onClick='location.href="/add_auto"'>Добавить авто</button>
+<script>
+    function my_confirm(form) {
+        return confirm('Удалить машину?');
+    }
+</script>
+
+<button type="button" class="btn btn-primary" onClick='location.href="/add_auto" '>Добавить авто</button>
 
 <table class="table table-striped table-bordered w-50 table-center">
     <tr>
@@ -24,13 +52,30 @@
         <th> </th>
     </tr>
     {{#each ddd}}
-        <tr>
-            <td align="center">{{FIO}}</td>
-            <td>{{{Model}}}</td>
-            <td>{{Chassis}}</td>
-            <td>{{{Year}}}</td>
-            <td>{{{Direction_transportation}}}</td> 
-            <td><a href="/add_auto?id={{_id}}"> <img class="edit-img" src="./img/edit.png"></a> <a href="/add_cars_delete"> <img class="Delete-img" src="./img/Delete.png"></a> </td> 
-        </tr>
+    <tr>
+        <td align="center">{{FIO}}</td>
+        <td>{{{Model}}}</td>
+        <td>{{Chassis}}</td>
+        <td>{{{Year}}}</td>
+        <td>{{{Direction_transportation}}}</td>
+        <td>
+            {{!-- <div align="center"> --}}
+            {{!-- <div style="float:left"> --}}
+            <a href="/add_auto?id={{_id}}"> <img class="edit-img" src="./img/edit.png" ></a>
+            {{!-- <div style="float:left"> --}}
+            <form method="POST" action="/delete_car" onsubmit="return my_confirm()">
+                <input class="submit" type="submit" value="">
+                {{!-- <input class="submit" type="submit" value="Del"> <img src="./img/Delete.png">--}}
+                <input type="hidden" name="id" value={{_id}}>
+            </form>
+            {{!-- </div>  --}}
+            {{!-- width="30" height="30"
+                    alt="" --}}
+            {{!-- // <form method="POST" action="/delete_car"> --}}
+            {{!-- <div> <a href="/delete_car"> <img class="Delete-img" src="./img/Delete.png" width="30" height="30"></a> </div> --}}
+            {{!-- </div> --}}
+        </td>
+
+    </tr>
     {{/each}}
 </table>

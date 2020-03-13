@@ -11,6 +11,7 @@ var usersRouter = require('./routes/users');
 var carsRouter = require('./routes/cars');
 var customersRouter = require('./routes/customers');
 var providersRouter = require('./routes/providers');
+var servicesRouter = require('./routes/services');
 
 var app = express();
 
@@ -47,12 +48,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname + '/cars', 'public')));
 app.use(express.static(path.join(__dirname + '/customers', 'public')));
 app.use(express.static(path.join(__dirname + '/providers', 'public')));
+app.use(express.static(path.join(__dirname + '/services', 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/cars', carsRouter);
 app.use('/customers', customersRouter);
 app.use('/providers', providersRouter);
+app.use('/services', servicesRouter);
 
 app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js')); 
 app.use('/js', express.static(__dirname + '/node_modules/jquery/dist')); 
